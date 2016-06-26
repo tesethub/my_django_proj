@@ -1,0 +1,66 @@
+﻿{% extends 'main.html' %}
+{% block mainblock %}
+{% load static %}
+	<header></header>
+	<nav>
+		<menu>
+			<li class="selected"><a href="/">Обо мне</a></li>
+			<li><a href="/study/">Обучение</a></li>
+			<li><a href="/jobs/">Работа</a></li>
+
+		</menu>
+	</nav>
+	<section class="content">
+		<h1>Козлов Александр Сергеевич</h1>
+		<h2>(Alex L, Alex Lastname, Alex Kozlov)</h2>
+		<div class="photo">
+		    <img src={%static 'img/w150.jpg' %} alt="" >
+		</div>
+		<table>
+			<tr>
+				<td>Дата рождения:</td>
+				<td>05.05.1980</td>
+			</tr>
+			<tr>
+				<td>Место проживания:</td>
+				<td> г. Казань</td>
+			</tr>
+			<tr>
+				<td>Гражданство:</td>
+				<td> РФ</td>
+			</tr>				
+			<tr>
+				<td>Образование:	</td>
+				<td>высшее </td>
+			</tr>
+		</table>
+		<div class="clear"></div>
+		<div>
+		<h2>Контактные данные</h2>
+		<table>
+			
+			<tr>
+				<td>Email:</td>
+				<td>e-finder@rambler.ru</td>
+			</tr>
+			<tr>
+				<td>Skype:</td>
+				<td>user08012013</td>
+			</tr>
+		</table>
+		<h2>О себе</h2>
+		<h3>Личные качества</h3>
+		<p>Есть желание обучаться, развиваться профессионально,   повышать уровень знаний в данной области, обучаться новым технологиям и уметь применять полученные знания на практике.
+		</p>
+		<h2>Навыки, знания</h2>
+            <h3>Back-end:</h3>
+		<p>Python -знания на среднем уровне, без практического опыта. Джанго- начинал учить самостоятельно, сейчас хочу  продолжить. Когда -то знал PHP,
+            даже короткое время работал программистом PHP, но очень давно, уже подзабыл.  </p>
+		<h3>Front-end:</h3>
+            <p>HTML, CSS, Javascript (больше в виде Jquery). C Bootstrap не работал, равно как и с предпроцессорами. </p>
+            <h2>Хобби</h2>
+
+
+		<p>Туризм, велопрогулки, интернет-серфинг</p></div>
+	</section>
+{% endblock %}
