@@ -1,66 +1,57 @@
-﻿{% extends 'main.html' %}
+﻿{% extends 'base.html' %}
 {% block mainblock %}
-{% load static %}
-	<header></header>
-	<nav>
-		<menu>
-			<li class="selected"><a href="/">Обо мне</a></li>
-			<li><a href="/study/">Обучение</a></li>
-			<li><a href="/jobs/">Работа</a></li>
+{#% load static %#}
 
-		</menu>
-	</nav>
 	<section class="content">
-		<h1>Козлов Александр Сергеевич</h1>
-		<h2>(Alex L, Alex Lastname, Alex Kozlov)</h2>
+		<h1>{{last_name|title}} {{first_name|title}} {{next_name|title}}</h1>
+		<h2>({{nickname}})</h2>
 		<div class="photo">
-		    <img src={%static 'img/w150.jpg' %} alt="" >
+		    <img src='static/img/{{img}}'  alt="" >
 		</div>
 		<table>
+            {% for data in personal_data %}
 			<tr>
-				<td>Дата рождения:</td>
-				<td>05.05.1980</td>
+				<td>{{data.name}}:</td>
+				<td>{{data.value}}</td>
 			</tr>
-			<tr>
-				<td>Место проживания:</td>
-				<td> г. Казань</td>
-			</tr>
-			<tr>
-				<td>Гражданство:</td>
-				<td> РФ</td>
-			</tr>				
-			<tr>
-				<td>Образование:	</td>
-				<td>высшее </td>
-			</tr>
+            {% empty %}
+            <tr>
+                <td>Нет данных</td>
+            </tr>
+            {%endfor %}
+
 		</table>
 		<div class="clear"></div>
 		<div>
 		<h2>Контактные данные</h2>
 		<table>
-			
-			<tr>
-				<td>Email:</td>
-				<td>e-finder@rambler.ru</td>
-			</tr>
-			<tr>
-				<td>Skype:</td>
-				<td>user08012013</td>
-			</tr>
+			{%for contact in contacts %}
+                <tr>
+                    <td>{{contact.name}}:</td>
+                    <td>{{contact.value}}</td>
+                </tr>
+            {%empty %}
+                Данные не представлены
+            {%endfor %}
+
 		</table>
 		<h2>О себе</h2>
-		<h3>Личные качества</h3>
-		<p>Есть желание обучаться, развиваться профессионально,   повышать уровень знаний в данной области, обучаться новым технологиям и уметь применять полученные знания на практике.
-		</p>
+            {% for quality in about_me %}
+		        <h3>{{quality.name}}</h3>
+		        <p>{{quality.content}}</p>
+            {%empty %}
+                Нет информации
+            {%endfor %}
 		<h2>Навыки, знания</h2>
-            <h3>Back-end:</h3>
-		<p>Python -знания на среднем уровне, без практического опыта. Джанго- начинал учить самостоятельно, сейчас хочу  продолжить. Когда -то знал PHP,
-            даже короткое время работал программистом PHP, но очень давно, уже подзабыл.  </p>
-		<h3>Front-end:</h3>
-            <p>HTML, CSS, Javascript (больше в виде Jquery). C Bootstrap не работал, равно как и с предпроцессорами. </p>
+            {% for skill in skills %}
+                <h3>{{skill.name}}:</h3>
+		        <p>{{skill.content}} </p>
+            {%empty %}
+                Нет навыков
+            {%endfor %}
+
             <h2>Хобби</h2>
 
-
-		<p>Туризм, велопрогулки, интернет-серфинг</p></div>
+		<p>{{hobbies|join:", "|capfirst}}</p></div>
 	</section>
 {% endblock %}

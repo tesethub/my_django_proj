@@ -1,27 +1,40 @@
-﻿{% extends 'main.html' %}
+﻿{% extends 'base.html' %}
 {% block mainblock %}
-{% load static %}
-	<header></header>
-	<nav>
-		<menu>
-			<li><a href="/">Обо мне</a></li>
-			<li class="selected"><a href="/study/">Обучение</a></li>
-			<li><a href="/jobs/">Работа</a></li>
 
-		</menu>
-	</nav>
+
 	<section class="content">
 		<h2>Пройденное обучение</h2>
 		<ul>
+
+
+            {%for item in courses|dictsortreversed:"period" %}
+               <li>
+
+                   {%if item.relevant == True %}
+                       <b>{{item.course}}</b>
+                   {%else %}
+                       {{item.course}}
+                   {%endif %}
+                   (
+                   {%if item.vendor_site %}
+                       <a href="{{item.vendor_site}}">{{item.vendor}}</a>
+                   {%else %}
+                   {{item.vendor}}
+                   {%endif %}
+                   , {{item.period}} г.)</li>
+            {%empty %}
+                Отсутствует
+            {%endfor %}
 			
-			<li><b>Django. Создание веб-сайтов на Python</b> онлайн-курс портала geekbrains.ru, 2016 г.</li>
-			<li><b>Python. Основы языка и разработки веб-приложений</b> онлайн-курс портала geekbrains.ru, 2015 г.</li>
-			<li>Монтаж, установка и администрирование локальных вычислительных сетей на основе Windows Server 2003(курсы УЦ  «Комфест», 2011 г.)</li>
-			<li>Программирование Web-сайтов, (курсы УЦ “А. Ф. Конто” , 2009 г).</li>
+
 		</ul>
 		<h2>Высшее образование</h2>
 		<ul>
-			<li>Казанский Государственный Университет им. В. И. Ульянова-Ленина, дневное отделение, биолого-почвенный факультет</li>
+            {%for item in high_education %}
+			<li>{{item.university}}, {{item.department}} отделение, {{item.faculty}} факультет</li>
+            {%empty %}
+                Отсутствует
+            {%endfor %}
 		</ul>
 	</section>
 {% endblock %}

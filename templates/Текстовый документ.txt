@@ -1,0 +1,6 @@
+<menu>
+			<li class="selected"><a href="/">Обо мне</a></li>
+			<li><a href="/study/">Обучение</a></li>
+			<li><a href="/jobs/">Работа</a></li>
+
+</menu>

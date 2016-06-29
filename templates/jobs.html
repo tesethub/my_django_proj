@@ -1,22 +1,19 @@
-﻿{% extends 'main.html' %}
+﻿{% extends 'base.html' %}
 {% block mainblock %}
-{% load static %}
-	<header></header>
-	<nav>
-		<menu>
-			<li><a href="/">Обо мне</a></li>
-			<li><a href="/study/">Обучение</a></li>
-			<li  class="selected"><a href="/jobs/">Работа</a></li>
 
-		</menu>
-	</nav>
+
 	<section class="content">
-		<h2>Работа</h2>
+		<h2>{{page_heading}}</h2>
 		<ul>
-			<li>ГБОУ ДПО Казанская Государственная медицинская академия, ведущий инженер-программист (2012-2015 г.)</li>
-            <li>ООО Clientbase, программист (2011 г.)</li>
+            {% for job in jobs_list %}
+			    <li>{{job.employer}}, {{job.position|lower}} ({{job.period}})</li>
+            {% empty %}
+                Нет работы. И не было никогда.
+            {% endfor %}
+            <!--<li>ООО Clientbase, программист (2011 г.)</li>
 			<li>ООО ”Строй Стандарт”, инженер (2008-2011г.)</li>
 			<li>ФГУП “НПО ГИПО”, отдел информационных технологий и защиты информации, инженер-программист(2003-2008 г.)</li>
+			-->
 		</ul>
 	</section>
 {% endblock %}
