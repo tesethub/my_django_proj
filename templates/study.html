@@ -12,9 +12,9 @@
                <li>
 
                    {%if item.relevant == True %}
-                       <b>{{item.course}}</b>
+                       <b>{{item.name}}</b>
                    {%else %}
-                       {{item.course}}
+                       {{item.name}}
                    {%endif %}
                    (
                    {%if item.vendor_site %}
@@ -22,7 +22,7 @@
                    {%else %}
                    {{item.vendor}}
                    {%endif %}
-                   , {{item.period}} г.)</li>
+                   , {{item.period|date:'Y'}} г.)</li>
             {%empty %}
                 Отсутствует
             {%endfor %}

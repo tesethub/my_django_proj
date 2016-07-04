@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from main.views import *
+from mainapp.views import *
+#from scriptapp.views import *
+import scriptapp.views as script
+
 
 urlpatterns = [
     #url(r'^admin/', admin.site.urls),
@@ -23,5 +26,6 @@ urlpatterns = [
     url(r'^$', index),
     url(r'^study/$', study),
     url(r'^jobs/$', jobs),
+    url(r'^script/$', script.ins),
     url(r'^.*$', not_found),
 ]

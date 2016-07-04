@@ -5,16 +5,19 @@
 
 	<section class="content">
 		<h2>{{page_heading}}</h2>
+
 		<ul>
             {% for job in jobs_list %}
-			    <li>{{job.employer}}, {{job.position|lower}} ({{job.period}})</li>
+			    <li>{{job.employer}}, {{job.position|lower}} ({{job.date_from|date:'Y'}}
+                    {%if job.date_from|date:'Y' != job.date_to|date:'Y' %}
+                    -{{job.date_to|date:'Y'}}
+                    {%endif %}
+
+                    )</li>
             {% empty %}
                 Нет работы. И не было никогда.
             {% endfor %}
-            <!--<li>ООО Clientbase, программист (2011 г.)</li>
-			<li>ООО ”Строй Стандарт”, инженер (2008-2011г.)</li>
-			<li>ФГУП “НПО ГИПО”, отдел информационных технологий и защиты информации, инженер-программист(2003-2008 г.)</li>
-			-->
+
 		</ul>
 	</section>
 {% endblock %}
