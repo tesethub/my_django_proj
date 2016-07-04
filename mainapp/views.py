@@ -25,25 +25,21 @@ def index(request):
     skills=[{'name': 'Back-end', 'content':'Python -знания на среднем уровне, без практического опыта. Джанго- начинал учить самостоятельно, сейчас хочу продолжить. '
                                            'Когда -то знал PHP, даже короткое время работал программистом PHP, но очень давно, уже подзабыл. '},
             {'name': 'Front-end', 'content':'HTML, CSS, Javascript (больше в виде Jquery). C Bootstrap не работал, равно как и с предпроцессорами.'}]
-    hobbies=['Туризм', 'велопрогулки', 'интернет-серфинг']
+   # hobbies=['Туризм', 'велопрогулки', 'интернет-серфинг']
+    #person=Person.objects.get(id=0)
+    #skills=Skills.objects.all()
+    hobbies=Hobbies.objects.all()
     return render(request, 'index.html', locals())
 
 def study(request):
     title_page='Обучение'
     courses=Course.objects.all()
 
-    # courses=[{'course':'Django. Создание веб-сайтов на Python ', 'vendor':'онлайн-курс портала geekbrains.ru', 'vendor_site':'https://geekbrains.ru','period':'2016', 'relevant':False},
-    #          {'course':'Python. Основы языка и разработки веб-приложений ', 'vendor':'онлайн-курс портала geekbrains.ru', 'vendor_site':'https://geekbrains.ru', 'period':'2015', 'relevant':False},
-    #          {'course':'Монтаж, установка и администрирование локальных вычислительных сетей на основе Windows Server 2003 ', 'vendor':'курсы УЦ  «Комфест»', 'period':'2011', 'relevant':False},
-    #          {'course':'Программирование Web-сайтов', 'vendor':'курсы УЦ “А. Ф. Конто”', 'period':'2009', 'relevant':False},
-    #          ]
     high_education=[{'university':'Казанский Государственный Университет им. В. И. Ульянова-Ленина',
                      'department':'дневное',
                      'faculty':'биолого-почвенный'}]
 
-    # for item in courses:
-    #     if 'django' in item['course'].lower() or 'python' in item['course'].lower():
-    #         item['relevant']=True
+
     return render(request, 'study.html', {'title_page':title_page,  'high_education': high_education, 'courses':courses})
 
 def jobs(request):

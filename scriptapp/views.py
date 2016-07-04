@@ -11,17 +11,18 @@ def ins(request):
     separator=file[1]
     fields=file[2].split(',')
     input.close()
+    message=""
 
 
 
     for string_ent in file[3:]:
-        obj_inst=Course()#hard-code!!
+        obj_inst=Hobbies()#hard-code!!
         string_array=string_ent.split(separator)
         for index, fieldname in enumerate(fields):
             obj_inst.__dict__[fieldname]=string_array[index]
 
         obj_inst.full_clean()
-        #obj_inst.save()
+        obj_inst.save()
     return render(request,'script.html', {'message':message})
 
    # job.employer=job_ent['employer']

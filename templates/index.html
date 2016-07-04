@@ -53,6 +53,10 @@
 
             <h2>Хобби</h2>
 
-		<p>{{hobbies|join:", "|capfirst}}</p></div>
+		<p>{%for hobby in hobbies %}
+              {{hobby.name}},
+            {%endfor %}
+
+        </p></div>
 	</section>
 {% endblock %}

@@ -30,7 +30,7 @@ class Person (models.Model):
     nickname=models.CharField(verbose_name='Псевдоним(ы)', max_length=100, blank=True)
     img=models.CharField(verbose_name='Путь к файлу фотографии', max_length=100, blank=True)
     descriptions=models.TextField(verbose_name='Личные качества', blank=True)
-    date_of_birth=models.DateField(verbose_name='Дата рождения', blank=True, default='0000-00-00')
+    date_of_birth=models.DateField(verbose_name='Дата рождения', blank=True, default='2001-01-01')
     location=models.CharField(verbose_name='Место жительства', max_length=50 , blank=True)
     nationality=models.CharField(verbose_name='Гражданство', max_length=50 , blank=True)
     education=models.CharField(verbose_name='Образование', max_length=50 , blank=True)
