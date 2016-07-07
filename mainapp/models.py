@@ -2,9 +2,8 @@ from django.db import models
 
 # Create your models here.
 class Jobs(models.Model):
-     employer=models.CharField(verbose_name='Наименование работодателя', max_length=255)
+     employer=models.ForeignKey('Organization')
      position=models.CharField(verbose_name='Должность', max_length=255)
-     employer_site=models.URLField(verbose_name='Сайт', blank=True)
      date_from=models.DateField(verbose_name='Начало периода работы')
      date_to=models.DateField(verbose_name='Окончание периода работы')
 
@@ -14,6 +13,15 @@ class Course(models.Model):
     vendor_site=models.URLField(blank=True)
     period=models.DateField(verbose_name='Год обучения')
     relevant=models.BooleanField(verbose_name='Отношение к рассматриваемой теме', default=False)
+
+
+class Organization(models.Model):
+    name=models.CharField(verbose_name='Наименование организации', max_length=255)
+    site=models.URLField(verbose_name='Сайт', blank=True)
+    location=models.CharField(verbose_name='Город', max_length=100, blank=True)
+    adress=models.CharField(verbose_name='Адрес', max_length=150, blank=True)
+    zip_code=models.CharField(verbose_name='Почтовый индекс', max_length=6, blank=True )
+
 
 class HighEducation (models.Model):
 
@@ -41,4 +49,4 @@ class Skills(models.Model):
     content=models.TextField(blank=True)
 
 class Hobbies (models.Model):
-    name=models.CharField(verbose_name='Название', max_length=100)
+    name=models.CharField(verbose_name='Название', max_length=100, unique=True)

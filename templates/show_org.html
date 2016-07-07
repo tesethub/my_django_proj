@@ -1,0 +1,16 @@
+﻿{% extends 'base.html' %}
+
+{% block mainblock %}
+
+
+	<section class="content">
+		<h1>{{organization.name}}</h1>
+        <p>
+            {%if organization.zip_code != "" %}
+                {{organization.zip_code|add:", "}}
+            {% endif %}
+            г. {{organization.location}}, {{organization.adress}}</p>
+        <p>Cайт организации: <a href="{{organization.site}}">{{organization.site}}</a></p>
+
+	</section>
+{% endblock %}

@@ -1,0 +1,13 @@
+﻿{% for job in jobs_list %}
+    <li class="ajaxed">
+        <a href="/show_org/{{job.employer.id}}/">{{job.employer.name}}</a>,
+                    {{job.position|lower}}
+                    ({{job.date_from|date:'Y'}}
+                    {%if job.date_from|date:'Y' != job.date_to|date:'Y' %}
+                        -{{job.date_to|date:'Y'}}
+                    {%endif %}
+
+                    )
+    </li>
+
+{% endfor %}

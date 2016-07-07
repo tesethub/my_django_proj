@@ -1,14 +1,20 @@
 ﻿{% extends 'base.html' %}
 {%block menu3 %}selected{%endblock %}
+{%block javascript %}
+    <script type="text/javascript" src='{{STATIC_PREFIX}}js/jquery.js'></script>
+    <script type="text/javascript" src='{{STATIC_PREFIX}}js/custom.js'></script>
+{%endblock%}
 {% block mainblock %}
 
 
 	<section class="content">
 		<h2>{{page_heading}}</h2>
 
-		<ul>
+		<ul class="jobs_list">
             {% for job in jobs_list %}
-			    <li>{{job.employer}}, {{job.position|lower}} ({{job.date_from|date:'Y'}}
+			    <li><a href="/show_org/{{job.employer.id}}/">{{job.employer.name}}</a>,
+                    {{job.position|lower}}
+                    ({{job.date_from|date:'Y'}}
                     {%if job.date_from|date:'Y' != job.date_to|date:'Y' %}
                     -{{job.date_to|date:'Y'}}
                     {%endif %}
@@ -19,5 +25,6 @@
             {% endfor %}
 
 		</ul>
+        <button class="switcher">Показать все</button>
 	</section>
 {% endblock %}

@@ -16,7 +16,7 @@ def ins(request):
 
 
     for string_ent in file[3:]:
-        obj_inst=Hobbies()#hard-code!!
+        obj_inst=HighEducation()#hard-code!!
         string_array=string_ent.split(separator)
         for index, fieldname in enumerate(fields):
             obj_inst.__dict__[fieldname]=string_array[index]

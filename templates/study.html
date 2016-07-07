@@ -32,7 +32,7 @@
 		<h2>Высшее образование</h2>
 		<ul>
             {%for item in high_education %}
-			<li>{{item.university}}, {{item.department}} отделение, {{item.faculty}} факультет</li>
+			<li>{{item.name}}, {{item.department}} отделение, {{item.faculty}} факультет</li>
             {%empty %}
                 Отсутствует
             {%endfor %}

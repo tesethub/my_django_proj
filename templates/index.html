@@ -4,45 +4,54 @@
 {#% load static %#}
 
 	<section class="content">
-		<h1>{{last_name|title}} {{first_name|title}} {{next_name|title}}</h1>
-		<h2>({{nickname}})</h2>
+		<h1>{{person.last_name|title}} {{person.first_name|title}} {{person.next_name|title}}</h1>
+		<h2>({{person.nickname}})</h2>
 		<div class="photo">
-		    <img src='static/img/{{img}}'  alt="" >
+		    <img src='static/img/{{person.img}}'  alt="" >
 		</div>
 		<table>
-            {% for data in personal_data %}
+
 			<tr>
-				<td>{{data.name}}:</td>
-				<td>{{data.value}}</td>
+				<td>Дата рождения:</td>
+				<td>{{person.date_of_birth}}</td>
 			</tr>
-            {% empty %}
+
             <tr>
-                <td>Нет данных</td>
+                <td>Место проживания:</td>
+                <td>{{person.location}}</td>
             </tr>
-            {%endfor %}
+            <tr>
+                <td>Гражданство:</td>
+                <td>{{person.nationality}}</td>
+            </tr>
+            <tr>
+                <td>Образование:</td>
+                <td>{{person.education}}</td>
+            </tr>
+
 
 		</table>
 		<div class="clear"></div>
 		<div>
 		<h2>Контактные данные</h2>
 		<table>
-			{%for contact in contacts %}
+
                 <tr>
-                    <td>{{contact.name}}:</td>
-                    <td>{{contact.value}}</td>
+                    <td>E-mail:</td>
+                    <td>{{person.email}}</td>
                 </tr>
-            {%empty %}
-                Данные не представлены
-            {%endfor %}
+
+
+
 
 		</table>
 		<h2>О себе</h2>
-            {% for quality in about_me %}
-		        <h3>{{quality.name}}</h3>
-		        <p>{{quality.content}}</p>
-            {%empty %}
-                Нет информации
-            {%endfor %}
+
+		        <h3>Личные качества</h3>
+		        <p>{{person.descriptions}}</p>
+
+
+
 		<h2>Навыки, знания</h2>
             {% for skill in skills %}
                 <h3>{{skill.name}}:</h3>
