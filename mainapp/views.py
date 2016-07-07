@@ -19,14 +19,22 @@ def study(request):
 
 def jobs(request):
     title_page='работа'
-    page_heading='Работа'
-    jobs_list=Jobs.objects.order_by('date_from')[0:3]
-    return render(request, 'jobs.html', {'title_page':title_page,  'page_heading':page_heading,'jobs_list':jobs_list})
+    if request.POST:
+        if request.POST.get('name')=='ajax':
+            jobs_list=Jobs.objects.order_by('-date_from')[3:]
+            template='ajax.html'
+        else:
+            raise Http404
+    else:
+        jobs_list=Jobs.objects.order_by('-date_from')[0:3]
+        template='jobs.html'
 
-def jobs2(request):
+    return render(request, template, {'title_page':title_page,  'jobs_list':jobs_list})
 
-    jobs_list=Jobs.objects.order_by('date_from')[3:]
-    return render(request, 'ajax.html', {'jobs_list':jobs_list})
+# def jobs2(request):
+#
+#     jobs_list=Jobs.objects.order_by('date_from')[3:]
+#     return render(request, 'ajax.html', {'jobs_list':jobs_list})
 
 
 def show_organization(request, organization):

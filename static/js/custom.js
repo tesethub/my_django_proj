@@ -2,11 +2,13 @@
     $('.switcher').on('click', function(){
     	if ($('.ajaxed').length ==0){
 	        $.ajax({
-	    	    url:'/jobsfull/',
+	    	    url:'/jobs/',
 	    	    cache: false,
-	    	    type: 'GET',
+	    	    data: {name:'ajax'},
+	    	    type: 'POST',
 	    	    success: function(html){
 	    		    $('.jobs_list').append(html);
+	    		    $('.switcher').html('Скрыть')
 	    	}
 	    });
 	    }

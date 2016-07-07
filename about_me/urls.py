@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^$', index),
     url(r'^study/$', study),
     url(r'^jobs/$', jobs),
-    url(r'^jobsfull/$', jobs2),
     url(r'^show_org/(\d+)/$', show_organization),
     url(r'^script/$', script.ins),
     url(r'^.*$', not_found),
